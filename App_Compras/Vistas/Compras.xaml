@@ -40,6 +40,9 @@
                 <StackLayout Grid.Row="1" BackgroundColor="#050506">
                     <Label Text="Compras" TextColor="White"></Label>
                 </StackLayout>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding command}"></TapGestureRecognizer>
+                </Grid.GestureRecognizers>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

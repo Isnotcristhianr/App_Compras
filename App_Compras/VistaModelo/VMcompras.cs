@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 //extr
-using App_Compras.Modelo;
+using App_Compras.Vistas;
 using App_Compras.Datos;
 
 namespace App_Compras.VistaModelo
@@ -98,7 +98,7 @@ namespace App_Compras.VistaModelo
             };
             var lblCantidad = new Label
             {
-                Text = "750ml",
+                Text = item.Contenido,
                 FontSize = 13,
                 TextColor = Color.Gray,
                 CharacterSpacing = 1
@@ -108,8 +108,15 @@ namespace App_Compras.VistaModelo
             stack.Children.Add(lblDescrip);
             stack.Children.Add(lblCantidad);
             frame.Content = stack;
+            //gesto tap
+            var tap = new TapGestureRecognizer();
+            tap.Tapped+= async (object sender, EventArgs e)=>{
+                await Navigation.PushAsync(new AgregarCompra());
+            };
             //ubicar 
             lado.Children.Add(frame);
+            //asignar tap
+            stack.GestureRecognizers.Add(tap);
         }
         public async Task ProcesoAsyncrono()
         {
