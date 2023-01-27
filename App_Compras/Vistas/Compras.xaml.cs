@@ -15,6 +15,7 @@ namespace App_Compras.Vistas
         public Compras()
         {
             InitializeComponent();
+            BindingContext = new App_Compras.VistaModelo.VMcompras(Navigation, ladoDerecha, ladoIzquierda);
         }
     }
 }
