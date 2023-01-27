@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+//
+using App_Compras.Vistas;
 
 namespace App_Compras
 {
@@ -10,7 +12,8 @@ namespace App_Compras
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+            MainPage = new NavigationPage(new Vistas.Compras());
         }
 
         protected override void OnStart()
