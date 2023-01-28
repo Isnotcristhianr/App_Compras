@@ -64,7 +64,7 @@ namespace App_Compras.VistaModelo
             //contenedor
             var frame = new Frame
             {
-                HeightRequest = 330,
+                HeightRequest = 350,
                 CornerRadius = 10,
                 Margin = 4,
                 BackgroundColor = Color.White,
@@ -98,7 +98,7 @@ namespace App_Compras.VistaModelo
             };
             var lblCantidad = new Label
             {
-                Text = item.Contenido,
+                Text = item.Contenido+"ml",
                 FontSize = 13,
                 TextColor = Color.Gray,
                 CharacterSpacing = 1
@@ -111,7 +111,7 @@ namespace App_Compras.VistaModelo
             //gesto tap
             var tap = new TapGestureRecognizer();
             tap.Tapped+= async (object sender, EventArgs e)=>{
-                await Navigation.PushAsync(new AgregarCompra());
+                await Navigation.PushAsync(new AgregarCompra(item));
             };
             //ubicar 
             lado.Children.Add(frame);

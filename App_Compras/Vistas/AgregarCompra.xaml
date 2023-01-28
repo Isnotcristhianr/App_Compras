@@ -8,20 +8,28 @@
     <StackLayout BackgroundColor="White">
         <Image Source="https://i.ibb.co/k5gTQFK/flecha-izquierda-2.png" HeightRequest="25" Margin="20" HorizontalOptions="Start"></Image>
         <StackLayout  Padding="40,15" Spacing="20">
-            <Image Source="https://i.ibb.co/pKCmmrX/vino-Naranja.png" Margin="0,0,0,30" HeightRequest="300"></Image>
-            <Label Text="Vino de Naranja" FontAttributes="Bold" FontSize="40" TextColor="Black"></Label>
-            <Label Text="750ml" CharacterSpacing="1" TextColor="Gray" FontSize="20" Margin="0,-10,0,5"></Label>
+            <Image Source="{Binding recibir.Icono}" Margin="0,0,0,30" HeightRequest="300"></Image>
+            <Label Text="{Binding recibir.Descripcion}" FontAttributes="Bold" FontSize="40" TextColor="Black"></Label>
+            <Label Text="{Binding recibir.Contenido}" CharacterSpacing="1" TextColor="Gray" FontSize="20" Margin="0,-10,0,5"></Label>
             <StackLayout Orientation="Horizontal" >
                 <Grid HorizontalOptions="StartAndExpand" VerticalOptions="Center">
                     <Frame Padding="0" BackgroundColor="#EEEEFF" CornerRadius="20" HeightRequest="40" VerticalOptions="Center" WidthRequest="100">
                         
                     </Frame>
-                    <Label Text="-" FontSize="30" HorizontalOptions="Start" TextColor="Black" Margin="16,0,0,6"></Label>
-                    <Label Text="1" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18" FontAttributes="Bold" TextColor="Black"></Label>
-                    <Label Text="+" FontSize="25" HorizontalOptions="End" TextColor="Black" Margin="0,-2,16,0" VerticalOptions="Center"></Label>
+                    <Label Text="-" FontSize="30" HorizontalOptions="Start" TextColor="Black" Margin="16,0,0,6">
+                        <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Disminuircommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="{Binding Cantidad}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="18" FontAttributes="Bold" TextColor="Black"></Label>
+                    <Label Text="+" FontSize="25" HorizontalOptions="End" TextColor="Black" Margin="0,-2,16,0" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Aumentarcommand}"/>
+                        </Label.GestureRecognizers>
+                           </Label>
                     
                 </Grid>
-                <Label Text="$ 12" FontSize="30" FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="Center"></Label>
+                <Label Text="{Binding recibir.Precio}" FontSize="30" FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" VerticalOptions="Center"></Label>
             </StackLayout>
             
             <Label Text="Descripcion del Producto" FontAttributes="Bold" FontSize="20" TextColor="Black" Margin="0,15,0,0"></Label>
@@ -36,7 +44,7 @@
             </Grid>
             <Button Text="Agregar al carrito" BackgroundColor="Aquamarine" CornerRadius="40" HorizontalOptions="EndAndExpand" TextTransform="None"
                     HeightRequest="50" WidthRequest="250" Margin="0,20,0,30"
-                    ></Button>
+                    Command="{Binding Insertarcommand}"></Button>
         </StackLayout>
     </StackLayout>
     

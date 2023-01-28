@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_Compras.Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,10 @@ namespace App_Compras.Vistas
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AgregarCompra : ContentPage
     {
-        public AgregarCompra()
+        public AgregarCompra(Mproductos parametrosTrae)
         {
             InitializeComponent();
+            BindingContext = new VistaModelo.VMagregarCompra(Navigation, parametrosTrae);
         }
     }
 }
