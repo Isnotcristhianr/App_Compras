@@ -15,13 +15,13 @@ namespace App_Compras.VistaModelo
         string _Texto;
         int _Cant;
         //extra
-        public Mproductos recibir { get; set; }
+        public Mproductos Recibir { get; set; }
         #endregion
         #region CONSTRUCTOR
         public VMagregarCompra(INavigation navigation, Mproductos traer)
         {
             Navigation = navigation;
-            recibir = traer;
+            Recibir = traer;
         }
         #endregion
         #region OBJETOS
@@ -43,16 +43,16 @@ namespace App_Compras.VistaModelo
             }
             
             var funcion = new DdetalleCompra();
-            var parametros = new MdetalleCompras();
-
-            parametros.Cantidad = Cantidad.ToString();
-            parametros.IdProducto = recibir.IdProducto;
-            parametros.PrecioCompra = recibir.Precio;
-            //calcular precio de venta
-            double total = 0;
-            double precioCompra = Convert.ToDouble(recibir.Precio);
+            var parametros = new MdetalleCompras
+            {
+                Cantidad = Cantidad.ToString(),
+                IdProducto = Recibir.IdProducto,
+                PrecioCompra = Recibir.Precio
+            };
+            double precioCompra = Convert.ToDouble(Recibir.Precio);
             double cantidad = Convert.ToDouble(Cantidad);
-            total = precioCompra * cantidad;
+            //calcular precio de venta
+            double total = precioCompra * cantidad;
             //
             parametros.Total = total.ToString();
 
@@ -64,7 +64,7 @@ namespace App_Compras.VistaModelo
         }
         public async Task ProcesoAsyncrono()
         {
-
+            await Task.Delay(1000);
         }
         public void ProcesoSimple()
         {

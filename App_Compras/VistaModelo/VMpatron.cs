@@ -29,7 +29,7 @@ namespace App_Compras.VistaModelo
         #region PROCESOS
         public async Task ProcesoAsyncrono()
         {
-
+            await Task.Delay(1000);
         }
         public void ProcesoSimple()
         {

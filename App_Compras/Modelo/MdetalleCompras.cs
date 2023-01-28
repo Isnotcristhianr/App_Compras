@@ -13,6 +13,10 @@ namespace App_Compras.Modelo
         
         //idVenta
         public string IdDetalleCompra { get; set; }
-    
+
+        //img almacenar
+        public string Imagen { get; set; }
+
+
     }
 }

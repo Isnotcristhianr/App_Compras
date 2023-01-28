@@ -16,21 +16,24 @@ namespace App_Compras.VistaModelo
         #region VARIABLES
         string _Texto;
         //extra
-        List<Mproductos> _listaProd;
         int _index;
+        //var almacen
+        List<Mproductos> _listaProd;
+        List<MdetalleCompras> _listaPreviaCompras;
         #endregion
         #region CONSTRUCTOR
+        
         public VMcompras(INavigation navigation, StackLayout ladoDerecha, StackLayout ladoIzquierda)
         {
             Navigation = navigation;
-            MostrarProductosBDD(ladoDerecha, ladoIzquierda);
+            _ = MostrarProductosBDD(ladoDerecha, ladoIzquierda);
         }
         #endregion
         #region OBJETOS
-        public string Texto
+        public List<MdetalleCompras> ListaPreviaCompras
         {
-            get { return _Texto; }
-            set { SetValue(ref _Texto, value); }
+            get { return _listaPreviaCompras; }
+            set { SetValue(ref _listaPreviaCompras, value); }
         }
 
         public List<Mproductos> ListaProductos
@@ -118,9 +121,15 @@ namespace App_Compras.VistaModelo
             //asignar tap
             stack.GestureRecognizers.Add(tap);
         }
+
+        public async Task PreviaDetalleCompra() {
+            var funcion = new DdetalleCompra();
+            ListaPreviaCompras = await funcion.PreviaDetalleCompra();
+        }
+
         public async Task ProcesoAsyncrono()
         {
-
+            await Task.Delay(1000);
         }
         public void ProcesoSimple()
         {

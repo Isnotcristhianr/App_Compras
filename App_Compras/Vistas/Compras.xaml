@@ -4,9 +4,9 @@
              x:Class="App_Compras.Vistas.Compras"
             NavigationPage.HasNavigationBar="False"
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             >
-    <ContentPage.Content>
-        <StackLayout BackgroundColor="#050506">
+             xmlns: transicion =''
+    >
+    <StackLayout BackgroundColor="#050506">
             <Grid RowDefinitions="*, 100" VerticalOptions="FillAndExpand">
                 <pancake:PancakeView CornerRadius="0,0,40,40" BackgroundColor="#EFEFEC">
                     <ScrollView HeightRequest="600">
@@ -34,16 +34,38 @@
                             </StackLayout>
                         </Grid>  
                     </ScrollView>
-                   
-                    
+
                 </pancake:PancakeView>
-                <StackLayout Grid.Row="1" BackgroundColor="#050506">
-                    <Label Text="Compras" TextColor="White"></Label>
+                <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,0,1,0">
+                    <Label Text="🛍" FontSize="30" FontAttributes="Bold" VerticalOptions="Center" TextColor="White"
+                           Margin="20,10,10,0" WidthRequest="75"></Label>
+                    
+                    <CollectionView HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
+                                    ItemsSource="{Binding ListaPreviaCompras}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" Span="1" HorizontalItemSpacing="10"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="4,0" WidthRequest="30">
+                                    <Frame CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" >
+                                    </Frame>
+                                        <Image Source="{Binding Imagen}" Margin="0,6" WidthRequest="30" HorizontalOptions="Center" 
+                                               ></Image> 
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Frame HeightRequest="40" WidthRequest="60" VerticalOptions="Center" CornerRadius="30" Padding="5" 
+                           BackgroundColor="Aquamarine">
+                        <Label Text="1" VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" 
+                               FontSize="20" FontAttributes="Bold" TextColor="White"></Label>
+                    </Frame>
+                    
                 </StackLayout>
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding command}"></TapGestureRecognizer>
                 </Grid.GestureRecognizers>
             </Grid>
         </StackLayout>
-    </ContentPage.Content>
 </ContentPage>
